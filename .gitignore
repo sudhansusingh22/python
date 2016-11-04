@@ -92,3 +92,5 @@ ENV/
 #config file
 /email/config.py
 /email/Sudhansu_Resume_SE.pdf
+/email/test.csv
+/email/Recruiters.csv

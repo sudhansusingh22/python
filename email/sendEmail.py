@@ -4,16 +4,30 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 import config
+import csv
+import time
+
 
 # your email address and password will be fetched from the config file
 
-print(config.config['senderEmail'])
+#read  information from csv file
 
-# fetch from the csv file
+receiverList = [] 
 
-personName = ""
-personEmail = ""
-companyName = ""
+with open(config.config['emailFile'], 'rb') as f:
+    reader = csv.reader(f)
+    next(f, None)
+    for row in reader:
+        myDict = {}
+        myDict['email'] = row[2]
+        myDict['name'] = row[0]
+        myDict['company'] = row[4]
+        receiverList.append(myDict)
+
+#print(receiverList)
+
+#print(config.config['senderEmail'])
+
 
 # attachment
 filename = config.config['filename']
@@ -77,4 +91,7 @@ method parameters:
 6. attachment : attachment name
 """
 
-sendEmail("ssingh25@ncsu.edu",config.config['senderEmail'],"Nikhil","NC State",filename,attachment)
+# send email to all the recipients
+for person in receiverList:
+	sendEmail(person['email'],config.config['senderEmail'],person['name'],person['company'],filename,attachment)
+	time.sleep(3)
