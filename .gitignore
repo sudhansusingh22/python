@@ -90,9 +90,8 @@ ENV/
 .ropeproject
 
 #config file
+*.pyc
 
-/email/config.py
-
-/email/Sudhansu_Resume_SE.pdf
-/email/test.csv
-/email/Recruiters.csv
+email/config.py
+email/Recruiters.csv
+email/Sudhansu_Resume_SE.pdf
