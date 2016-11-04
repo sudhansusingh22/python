@@ -9,7 +9,7 @@ import os
 browserExe = "chrome"
 
 # read randdom lines from file
-lines = open('words.txt').read().splitlines()
+lines = open('/home/sud/Desktop/bing/words.txt').read().splitlines()
 words = []
 for i in range(30):
 	words.append(random.choice(lines))
