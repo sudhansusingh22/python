@@ -29,16 +29,15 @@ with open(config.config['emailFile'], 'rb') as f:
 #print(config.config['senderEmail'])
 
 
-# attachment
-filename = config.config['filename']
-attachment = open(config.config['attachment'], "rb")
 
-
-
-def sendEmail(toaddr,fromEmail,name,companyName,filename,attachment):
+def sendEmail(toaddr,fromEmail,name,companyName):
 
 	# to email address
 	# fetch from the csv file
+	# attachment
+	filename = config.config['filename']
+	attachment = open(config.config['attachment'], "rb")
+
 
 	subject = config.config['subject']
 	subject = subject + companyName
@@ -80,6 +79,7 @@ def sendEmail(toaddr,fromEmail,name,companyName,filename,attachment):
 
 	except Exception, e:
 		print e
+		pass
 
 """
 method parameters:
@@ -93,5 +93,5 @@ method parameters:
 
 # send email to all the recipients
 for person in receiverList:
-	sendEmail(person['email'],config.config['senderEmail'],person['name'],person['company'],filename,attachment)
+	sendEmail(person['email'],config.config['senderEmail'],person['name'],person['company'])
 	time.sleep(3)
